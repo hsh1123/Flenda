@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- 사용자페이지 -->
+	<definition name="main.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/commons/header.jsp" />
+		<put-attribute name="top_inc" value="/WEB-INF/views/commons/top_inc.jsp" />
+		<put-attribute name="top_menu" value="/WEB-INF/views/main/top_menu.jsp" />
+		<put-attribute name="main" value="/WEB-INF/views/main/main.jsp" />
+		<put-attribute name="bottom_inc" value="/WEB-INF/views/commons/bottom_inc.jsp" />
+	</definition>
+	<!-- bbs -->
+	<definition name="bbs.tiles" extends="main.tiles">
+		<put-attribute name="left_menu" value="/WEB-INF/views/bbs/bbs_leftmenu.jsp" />
+		<put-attribute name="main" value="/WEB-INF/views/bbs/bbslist.jsp" />
+	</definition>
+	
+	<!-- 사용자페이지 액티비티 -->
+	<definition name="main_activity.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/main/activity/searchpage.jsp" />
+	</definition>
+	
+	<definition name="main_actdetail.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/main/activity/detailpage.jsp" />
+	</definition>
+	
+	<!--관리자페이지 -->
+	<definition name="management.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/commons/header.jsp" />
+		<put-attribute name="top_inc" value="/WEB-INF/views/commons/top_manage.jsp" />
+		<put-attribute name="main" value="/WEB-INF/views/management/home.jsp" />
+		<put-attribute name="bottom_inc" value="/WEB-INF/views/commons/bottom_inc.jsp" />
+	</definition>
+	
+	<!-- 관리자페이지 액티비티 -->
+	<definition name="activity.tiles" extends="management.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/management/activitymanager/actlist.jsp" />
+	</definition>
+	
+	<definition name="actwrite.tiles" extends="management.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/management/activitymanager/actwrite.jsp" />
+	</definition>
+	
+	<definition name="actdetail.tiles" extends="management.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/management/activitymanager/actdetail.jsp" />
+	</definition>
+	
+	<definition name="actupdate.tiles" extends="management.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/management/activitymanager/actupdate.jsp" />
+	</definition>
+
+</tiles-definitions>

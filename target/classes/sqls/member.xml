@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper가 있는 곳 -->
+
+<mapper namespace="Member">
+
+<select id="idCheck" parameterType="com.flenda.www.dto.MemberDto" resultType="Integer">
+	SELECT NVL(COUNT(*),0)
+	FROM MEMBER
+	WHERE ID=#{id}
+</select>
+
+<insert id="addMember" parameterType="com.flenda.www.dto.MemberDto">
+	INSERT INTO MEMBER(ID,PWD,NAME,EMAIL,AUTH)
+	VALUES(#{id},#{pwd},#{name},#{email},3)
+</insert>
+
+<select id="login" parameterType="com.flenda.www.dto.MemberDto" resultType="com.flenda.www.dto.MemberDto">
+	SELECT ID,NAME,EMAIL,AUTH
+	FROM MEMBER
+	WHERE ID=#{id} AND PWD=#{pwd}
+</select>
+
+</mapper>
+
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="Main">
+ 	<insert id="addPictures" parameterType="com.flenda.www.dto.PicturesDto">
+		INSERT INTO PICTURES(PICSEQ, SELLSEQ, NEWFILENAME, REGIDATE)
+		VALUES(PICTURES_SEQ.NEXTVAL, (SELECT MAX(SELLSEQ) FROM ACTIVITY), #{ newFileName }, SYSDATE)		 	
+ 	</insert>
+ 	<insert id="updatePictures" parameterType="com.flenda.www.dto.PicturesDto">
+		INSERT INTO PICTURES(PICSEQ, SELLSEQ, NEWFILENAME, REGIDATE)
+		VALUES(PICTURES_SEQ.NEXTVAL, #{ sellSeq }, #{ newFileName }, SYSDATE)		 	
+ 	</insert>
+ 	<delete id="deletePic" parameterType="Integer">
+ 		DELETE FROM PICTURES
+ 		WHERE SELLSEQ=#{ seq } 
+ 	</delete>
+ 	<select id="countPics" parameterType="Integer" resultType="Integer">
+ 		SELECT NVL(COUNT(*),0)
+ 		FROM PICTURES
+ 		WHERE SELLSEQ=#{ seq }
+ 	</select>
+ 	<select id="getPictures" resultType="com.flenda.www.dto.PicturesDto">
+ 		SELECT *
+ 		FROM PICTURES
+ 	</select>
+ 	<select id="getPic" parameterType="Integer" resultType="com.flenda.www.dto.PicturesDto">
+ 		SELECT *
+ 		FROM PICTURES
+ 		WHERE SELLSEQ=#{ seq }
+ 	</select>
+ </mapper>
